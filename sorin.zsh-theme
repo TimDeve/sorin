@@ -121,7 +121,7 @@ if (( ${+functions[git-info]} )); then
   zstyle ':zim:git-info:indexed' format ' %F{2}✚'
   zstyle ':zim:git-info:unindexed' format ' %F{4}✱'
   zstyle ':zim:git-info:position' format ' %F{13}%p'
-  zstyle ':zim:git-info:stashed' format ' %F{6}✭'
+  zstyle ':zim:git-info:stashed' format ' %F{6}★'
   zstyle ':zim:git-info:untracked' format ' %F{7}◼'
   zstyle ':zim:git-info:keys' format \
     'status' '%%B$(coalesce "%b" "%p" "%c")%s%A%B%S%i%I%u%f%%b'
