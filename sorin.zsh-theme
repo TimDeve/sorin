@@ -130,7 +130,13 @@ if (( ${+functions[git-info]} )); then
   autoload -Uz add-zsh-hook && add-zsh-hook precmd _prompt_sorin_precmd
 fi
 
+_prompt_sorin_ssh() {
+  if [[ -z "$TMUX" ]]; then
+    echo ${SSH_TTY:+"%F{9}%n%F{7}@%F{3}%m "}
+  fi
+}
+
 # Define prompts.
-PS1='${SSH_TTY:+"%F{9}%n%F{7}@%F{3}%m "}%F{4}${_prompt_sorin_pwd}%b%(!. %B%F{1}#%b.)$(_prompt_sorin_vimode)%f '
+PS1='$(_prompt_sorin_ssh)%F{4}${_prompt_sorin_pwd}%b%(!. %B%F{1}#%b.)$(_prompt_sorin_vimode)%f '
 RPS1='${VIRTUAL_ENV:+"%F{3}(${VIRTUAL_ENV:t})"}%(?:: %F{1}✘ %?)${VIM:+" %B%F{6}V%b"}${(e)_prompt_sorin_git}%f'
 SPROMPT='zsh: correct %F{1}%R%f to %F{2}%r%f [nyae]? '
